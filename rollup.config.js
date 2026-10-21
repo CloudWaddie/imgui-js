@@ -7,6 +7,8 @@ const tsconfigOverride = {
   compilerOptions: {
     target: "ES2015",
     module: "ES2015",
+    // so the tslib helpers resolve from node_modules ("system" modules default to classic resolution)
+    moduleResolution: "node",
     declaration: false,
   }
 };
@@ -28,6 +30,8 @@ export default [
       }),
       typescript({
         clean: true,
+        // explicit: the default "*.ts+(|x)" glob stopped matching with picomatch 2.3.2
+        include: ["**/*.ts"],
         tsconfigOverride,
       }),
       commonjs(),
@@ -47,6 +51,8 @@ export default [
     plugins: [
       typescript({
         clean: true,
+        // explicit: the default "*.ts+(|x)" glob stopped matching with picomatch 2.3.2
+        include: ["**/*.ts"],
         tsconfig: "example/tsconfig.json",
         tsconfigOverride,
       }),
@@ -65,6 +71,8 @@ export default [
     plugins: [
       typescript({
         clean: true,
+        // explicit: the default "*.ts+(|x)" glob stopped matching with picomatch 2.3.2
+        include: ["**/*.ts"],
         tsconfig: "example/tsconfig.json",
         tsconfigOverride,
       }),
@@ -83,6 +91,8 @@ export default [
     plugins: [
       typescript({
         clean: true,
+        // explicit: the default "*.ts+(|x)" glob stopped matching with picomatch 2.3.2
+        include: ["**/*.ts"],
         tsconfig: "example/tsconfig.json",
         tsconfigOverride,
       }),
